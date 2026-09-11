@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17130F"><meta name="description" content="Zuiver, Ghent. Pure ingredients. Lasting impressions. Discover a seasonal dining experience shaped by nature and the pleasure of coming together.">
+<title>Zuiver — Pure ingredients. Lasting impressions.</title>
+<link rel="preload" href="assets/fonts/aguero_serif/Aguero%20Serif.otf" as="font" type="font/otf" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&family=Valley+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script src="app.js" type="module"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="header" id="header">
+ <button class="nav-toggle small" aria-expanded="false" aria-controls="navigation"><span class="menu-icon"><i></i><i></i></span><span class="nav-label">Explore</span></button>
+ <a class="brand" href="#home" aria-label="Zuiver home"><img class="logo white" src="assets/images/logo-white.png" alt="Zuiver"><img class="logo black" src="assets/images/logo-black.png" alt=""></a>
+ <a class="header-reserve small" href="#visit">A table for you </a>
+</header>
+<dialog class="navigation" id="navigation" aria-label="Explore Zuiver"><nav><span class="eyebrow">The world of Zuiver</span><a href="#heritage"><small>01</small>Our heritage</a><a href="#menu"><small>02</small>The menu</a><a href="#philosophy"><small>03</small>Our philosophy</a><a href="#visit"><small>04</small>Your evening</a></nav><span class="small nav-footer">Pure ingredients. Lasting impressions.</span><button class="border-button motion-toggle" aria-pressed="false">Pause films</button><button class="nav-close" aria-label="Close navigation">×</button></dialog>
+<main id="main">
+<section class="hero" id="home" aria-label="Welcome to Zuiver">
+ <div class="hero-media"><video id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/2.png"><source src="assets/videos/dining%20room.mp4" type="video/mp4"></video></div>
+ <div class="hero-shade"></div>
+ <h1 class="sr-only">Zuiver restaurant — pure ingredients, lasting impressions.</h1>
+</section>
+<section class="heritage" id="heritage" aria-labelledby="heritage-title">
+ <div class="heritage-stage">
+  <div class="collage-label eyebrow">01 / Rooted in something real</div>
+  <div class="collage-photo photo-1"><img src="assets/images/1.png" alt="The chefs at work in Zuiver’s open kitchen" loading="lazy"></div>
+  <div class="collage-photo photo-2"><img src="assets/images/4.png" alt="Seasonal ingredients, carefully plated" loading="lazy"></div>
+  <div class="collage-photo photo-3"><img src="assets/images/7.png" alt="An intimate table set for an evening at Zuiver" loading="lazy"></div>
+  <div class="collage-photo photo-4"><img src="assets/images/3.png" alt="Fresh fish with herbs and seasonal vegetables" loading="lazy"></div>
+  <div class="collage-photo photo-5"><img src="assets/images/6.png" alt="Art and warm light in the dining room" loading="lazy"></div>
+  <div class="collage-photo photo-6"><img src="assets/images/5.png" alt="A dish finished with a rich jus" loading="lazy"></div>
+  <div class="heritage-central"><img src="assets/images/central.png" alt="Sculptures and abstract art in Zuiver’s warmly lit interior" loading="eager"><div class="heritage-shade"></div></div>
+  <div class="heritage-copy"><p class="eyebrow">The essence of Zuiver</p><div class="sunrise"><h2 id="heritage-title">Heritage</h2></div><p>Our story begins with a simple belief: good food brings people together. Rooted in the seasons and a love of honest ingredients, Zuiver celebrates the beauty of simplicity.</p><span class="heritage-signature">Pure in spirit. Rich in experience.</span></div>
+  <span class="collage-bottom small">A sense of place. A feeling of belonging.</span>
+ </div>
+</section>
+<section class="menu-section light-section" id="menu" aria-labelledby="menu-title">
+ <div class="menu-gallery gallery-left" aria-label="A taste of Zuiver">
+  <figure class="parallax-frame"><img src="assets/images/menu-image-1.png" alt="The Zuiver menu on a candlelit marble table" loading="lazy"></figure>
+  <figure class="parallax-frame"><img src="assets/images/menu-image-3.png" alt="Seasonal vegetables and herbs on handmade ceramics" loading="lazy"></figure>
+  <figure class="parallax-frame"><img src="assets/images/menu-image-5.png" alt="A thoughtfully prepared seasonal dish" loading="lazy"></figure>
+ </div>
+ <div class="menu-center"><div class="menu-card" id="menu-card">
+  <p class="eyebrow">02 / At the table</p>
+  <h2 id="menu-title">The menu</h2>
+  <div class="menu-page-label"><span id="menu-kind">Food</span><span id="menu-page-number">01 / 02</span></div>
+  <div class="menu-content" id="menu-content" aria-live="polite" aria-atomic="true"></div>
+  <p class="menu-note" id="menu-note">Pure ingredients. Guided by the seasons.</p>
+  <button class="menu-switch border-button" id="menu-switch" aria-label="Show drinks menu">Discover the drinks</button>
+ </div></div>
+ <div class="menu-gallery gallery-right" aria-label="From the kitchen and bar">
+  <figure class="parallax-frame"><img src="assets/images/menu-image-4.png" alt="Fish with seasonal greens and a delicate sauce" loading="lazy"></figure>
+  <figure class="parallax-frame"><img src="assets/images/menu-image-2.png" alt="An amber aperitif with citrus and rosemary" loading="lazy"></figure>
+  <figure class="parallax-frame"><img src="assets/images/menu-image-6.png" alt="Fresh salad with pear, nuts and herbs" loading="lazy"></figure>
+ </div>
+</section>
+<section class="philosophy" id="philosophy" aria-labelledby="philosophy-title"><div class="philosophy-copy"><p class="eyebrow">03 / The art of simplicity</p><h2 id="philosophy-title">Less noise.<br><em>More soul.</em></h2><p>We believe the most memorable evenings are found in the smallest details. The warmth of a welcome. The first pour. A dish that feels both familiar and entirely new.</p><p>Thoughtfully sourced. Carefully prepared.<br>Always, unmistakably, Zuiver.</p><a class="text-link" href="#visit">Make yourself at home </a></div><figure class="philosophy-image"><video autoplay loop muted playsinline preload="none" poster="assets/images/1.png" aria-label="Our chefs at work"><source src="assets/videos/kitchen.mp4" type="video/mp4"></video><figcaption class="small kitchen-caption"><span>Craft, care, and a little instinct.</span><button class="kitchen-toggle small" aria-label="Pause kitchen video">Pause film Ⅱ</button></figcaption></figure></section>
+<section class="evening-visit" id="evening" aria-label="An evening at Zuiver">
+ <div class="evening-stage">
+  <section class="evening" aria-labelledby="evening-title">
+   <div class="evening-media"><img src="assets/images/2.png" alt="The candlelit dining room at Zuiver" loading="lazy"></div>
+   <div class="evening-copy"><p class="eyebrow">Stay a little longer</p><h2 id="evening-title">Some evenings<br><em>stay with you.</em></h2><p>A first taste. A last glass. A moment of your own.</p></div>
+  </section>
+  <section class="visit light-section" id="visit" aria-labelledby="visit-title">
+   <div class="visit-top"><p class="eyebrow">04 / You’re invited</p><p class="eyebrow">Ghent, Belgium</p></div>
+   <div class="visit-heading">
+    <div class="visit-title-block"><h2 id="visit-title">Your table<br><em>awaits.</em></h2><p>For quiet celebrations, long conversations,<br>and the simple pleasure of being together.</p></div>
+    <figure class="visit-image"><img src="assets/images/7.png" alt="A table waiting for you at Zuiver" loading="lazy"><figcaption class="eyebrow">A place to call your own</figcaption></figure>
+    <div class="visit-invitation"><span class="eyebrow">Food. People. Moments.</span><p>Bring good company.<br>We’ll take care of the rest.</p><button class="border-button reservation-button" id="reservation-open">A table for you</button><p class="visit-small">Make an evening of it.</p></div>
+   </div>
+   <div class="visit-details"><div><span class="eyebrow">Find us</span><p>Sint-Pietersnieuwstraat 12<br>9000 Ghent, Belgium</p></div><div><span class="eyebrow">At our table</span><p>Seasonal cuisine.<br>Thoughtfully served.</p></div><a class="border-button" href="https://www.google.com/maps/search/?api=1&query=Sint-Pietersnieuwstraat+12+9000+Gent" target="_blank" rel="noopener">Find your way</a></div>
+  </section>
+ </div>
+</section>
+</main>
+<footer class="footer" id="footer">
+ <div class="footer-stage">
+  <div class="footer-background"><img src="assets/images/footer-background.png" alt="" loading="lazy"></div>
+  <div class="footer-shade"></div>
+  <p class="footer-intro eyebrow">Good food brings people together.</p>
+  <div class="footer-logo-place" aria-hidden="true"><img src="assets/images/logo-white.png" alt=""></div>
+  <nav class="footer-links footer-links-left" aria-label="Discover"><a href="#heritage">Our heritage</a><a href="#menu">Food & drinks</a><a href="#philosophy">Our philosophy</a></nav>
+  <nav class="footer-links footer-links-right" aria-label="Visit"><a href="#visit">Your evening</a><a href="#home">Back to the beginning</a><a href="https://www.google.com/maps/search/?api=1&query=Sint-Pietersnieuwstraat+12+9000+Gent" target="_blank" rel="noopener">Find Zuiver</a></nav>
+  <div class="footer-bottom small"><span>© <span id="year">2026</span> Zuiver</span><span>Pure ingredients. Lasting impressions.</span><span>Ghent, Belgium</span></div>
+ </div>
+</footer>
+<dialog class="reservation-dialog" aria-labelledby="reservation-title"><button class="dialog-close" aria-label="Close visit details">×</button><p class="eyebrow">An evening at Zuiver</p><h2 id="reservation-title">Come on in.</h2><p>Find us at Sint-Pietersnieuwstraat 12, 9000 Ghent.</p><p>Online reservations are not available on this website yet. Please arrange your table directly with the restaurant.</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Sint-Pietersnieuwstraat+12+9000+Gent" target="_blank" rel="noopener">Find the restaurant </a></dialog>
+</body></html>
