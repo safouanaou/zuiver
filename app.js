@@ -105,35 +105,17 @@ reservation.addEventListener('click', e => {
  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) reservation.close();
 });
 const videos = $$('video');
-let filmsPaused = reduced.matches;
-let kitchenPaused = reduced.matches;
-const kitchen = $('.philosophy video');
-function syncKitchen() {
- $('.kitchen-toggle').textContent = kitchen.paused ? 'Play film' : 'Pause film';
- $('.kitchen-toggle').setAttribute('aria-label', kitchen.paused ? 'Play kitchen video' : 'Pause kitchen video');
+function keepFilmsPlaying() {
+ videos.forEach(video => { if (video.paused) video.play().catch(()=>{}); });
 }
-$('.kitchen-toggle').addEventListener('click', () => {
- kitchenPaused = !kitchen.paused;
- if(kitchenPaused) kitchen.pause(); else kitchen.play().catch(()=>{});
+videos.forEach(video => {
+ video.addEventListener('canplay', keepFilmsPlaying);
+ video.addEventListener('pause', keepFilmsPlaying);
+ video.addEventListener('ended', keepFilmsPlaying);
 });
-kitchen.addEventListener('play', syncKitchen); kitchen.addEventListener('pause', syncKitchen);
-function syncFilms() {
- $('.motion-toggle').setAttribute('aria-pressed', filmsPaused);
- $('.motion-toggle').textContent = filmsPaused ? 'Play films' : 'Pause films';
-}
-$('.motion-toggle').addEventListener('click', () => {
- filmsPaused = !filmsPaused; kitchenPaused = filmsPaused;
- videos.forEach(video => {
-  const r = video.getBoundingClientRect();
-  if (filmsPaused) video.pause(); else if (r.bottom > 0 && r.top < innerHeight) video.play().catch(()=>{});
- }); syncFilms();
-});
-const videoObserver = new IntersectionObserver(entries => entries.forEach(({target,isIntersecting}) => {
- if (!isIntersecting || filmsPaused || (target === kitchen && kitchenPaused)) target.pause();
- else target.play().catch(()=>{});
-}), {threshold:.05});
-videos.forEach(video => { if(filmsPaused) video.pause(); videoObserver.observe(video); });
-syncFilms(); syncKitchen();
+addEventListener('pageshow', keepFilmsPlaying);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) keepFilmsPlaying(); });
+keepFilmsPlaying();
 const heritage = $('.heritage'), central = $('.heritage-central'), heritageCopy = $('.heritage-copy');
 const heritageTitle = $('#heritage-title'), heritageShade = $('.heritage-shade');
 const photos = $$('.collage-photo');
@@ -150,23 +132,26 @@ function updateScroll() {
  storySlide = ease(clamp((sp - .51) / .28));
  const fp = ease(clamp((h - footerRect.top) / h));
  const settled = clamp(-footerRect.top / Math.max(1,footerRect.height-h));
- const footerFade = ease(clamp((fp - .65) / .35)) * .65 + ease(clamp(settled / .55)) * .35;
+ // Keep the footer on its espresso field until the logo has fully settled,
+ // then use the remaining sticky distance for a slow photographic reveal.
+ const footerFade = ease(clamp((settled - .06) / .78));
  const overMenu = menuRect.top < 65 && menuRect.bottom > 65;
  const overStory = storyRect.top <= 65 && storyRect.bottom > 65;
  const overFooter = footerRect.top < 65;
- let logoDark = overMenu || (overStory && storySlide > .5) || overFooter;
- if (overFooter && footerFade > .35) logoDark = false;
+ let logoDark = overMenu || (overStory && storySlide > .5);
  if (reduced.matches) {
   const vr = visit.getBoundingClientRect();
   logoDark = overMenu || (vr.top < 65 && vr.bottom > 65);
   header.classList.toggle('logo-dark',logoDark);
   header.classList.toggle('links-dark',logoDark && (!overMenu || mobile));
+  header.classList.toggle('footer-mode',overFooter);
   revealWithin(heritageCopy); revealWithin(story);
   visit.inert = false;
   return;
  }
  header.classList.toggle('logo-dark',logoDark);
- header.classList.toggle('links-dark',(mobile && overMenu) || (overStory && storySlide > .98) || (overFooter && footerFade <= .35));
+ header.classList.toggle('links-dark',(mobile && overMenu) || (overStory && storySlide > .98));
+ header.classList.toggle('footer-mode',overFooter);
  // Track each edge independently while the light invitation slides under the header.
  if(overStory && storySlide > 0 && storySlide < 1){navToggle.style.color = storySlide>.96 ? 'var(--black)' : 'var(--ivory)';reserveLink.style.color=storySlide>.08 ? 'var(--black)' : 'var(--ivory)';}
  else {navToggle.style.color='';reserveLink.style.color='';}
@@ -208,7 +193,6 @@ function updateScroll() {
  const linkX=w*(mobile?.02:.05)*fp;
  navToggle.style.transform=`translate(${linkX}px,${linkY}px)`;
  reserveLink.style.transform=`translate(${-linkX}px,${linkY}px)`;
- footer.classList.toggle('is-dark',footerFade>.35);
  $('.footer-background').style.opacity=footerFade;
  $('.footer-shade').style.opacity=footerFade;
  const linksReveal=ease(clamp((fp-.65)/.35));
